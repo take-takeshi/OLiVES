@@ -21,7 +21,7 @@ OLiVESは、Ruby on Railsを使用して作られたオンラインイベント�
 * app/controllers/admin/slots_controller.rb内の f.hidden_field → hidden_field_tag に変更
 
 # Note
-rails severコマンド実行時に以下のエラーが発生した場合、Postgresqlの再起動を行ってください。
+bin/rails s 実行時に以下のエラーが発生した場合は、以下コマンドでPostgresqlの再起動を行ってください。
 
 * エラー
 ActiveRecord :: ConnectionNotEstablished
