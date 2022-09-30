@@ -1,0 +1,65 @@
+<nav aria-label="breadbrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Admin', admin_root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Conference', edit_admin_conference_path(@slot.track.day.conference) %></li>
+    <li class="breadcrumb-item"><%= link_to 'Day', edit_admin_day_path(@slot.track.day) %></li>
+    <li class="breadcrumb-item"><%= link_to 'Track', edit_admin_track_path(@slot.track) %></li>
+    <li class="breadcrumb-item">Slot</li>
+  </ol>
+</nav>
+
+
+<h1>データの管理</h1>
+<h2>セッションの編集</h2>
+<p>
+  <%= form_with model: [:admin, @slot] do |f| %>
+    <table class='table table-sm'>
+      <tr><td><%= f.label 'タイトル' %></td>
+          <td><%= f.text_field :title, class: 'form-control' %></td></tr>
+
+      <tr><td><%= f.label '説明' %></td>
+          <td><%= f.text_area :description, class: 'form-control' %></td></tr>
+
+      <tr><td><%= f.label '担当者' %></td>
+          <td><%= f.text_field :organizer, class: 'form-control' %></td></tr>
+
+      <tr><td><%= f.label '座長' %></td>
+          <td><%= f.text_field :chair, class: 'form-control' %></td></tr>
+
+      <tr><td><%= f.label '発表者' %></td>
+          <td><%= f.text_field :lecturer, class: 'form-control' %></td></tr>
+
+      <tr><td><%= f.label '会場' %></td>
+          <td><%= f.text_field :room, class: 'form-control'%></td></tr>
+ 
+      <tr><td><%= f.label 'URL' %></td>
+          <td><%= f.text_field :url, class: 'form-control' %></td></tr>
+
+      <tr><td><%= f.label '対象者' %></td>
+          <td><%= f.text_field :audience, class: 'form-control' %></td></tr>
+
+      <tr><td><%= f.label 'レベル' %></td>
+          <td><%= f.text_field :level, class: 'form-control' %></td></tr>
+     
+      <tr><td><%= f.label '前提知識' %></td>
+          <td><%= f.text_field :background, class: 'form-control' %></td></tr>
+
+      <tr><td><%= f.label 'カテゴリ' %></td>
+          <td><%= f.text_field :category, class: 'form-control'%></td></tr>
+ 
+      <tr><td><%= f.label '資料' %></td>
+          <td><%= f.text_field :material, class: 'form-control' %></td></tr>
+
+      <tr><td><%= f.label '資料URL' %></td>
+          <td><%= f.text_field :mlinkurl, class: 'form-control' %></td></tr>
+
+      <tr><td><%= f.label '時間' %></td>
+        <td><%= f.time_select :start_time, minute_step: 5 %> - 
+          <%= f.time_select :end_time, minute_step: 5 %> 
+        </td></tr>
+ 
+    </table>
+    <%= f.submit '更新', class: 'btn btn-primary' %>
+  <% end %>
+</p>

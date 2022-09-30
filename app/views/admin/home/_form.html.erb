@@ -1,0 +1,18 @@
+<%= form_with model: model do |f| %>
+  <table>
+    <tr><td><%= f.label '名前' %></td>
+      <td><%= f.text_field :name, class: 'form-control' %></td></tr>
+    
+    <tr><td><%= f.label '説明' %></td>
+      <td><%= f.text_area :description, class: 'form-control' %></td></tr>
+    
+    <tr><td><%= f.label '開催日' %></td>
+      <td><%= f.date_select :start_date %></td></tr>
+
+    <tr><td><%= f.label '日数' %></td>
+      <td><%= f.select :duration, [[1,1],[2,2],[3,3],[4,4],[5,5]] %></td></tr>
+  </table>
+  <%= f.submit label, class: 'btn btn-primary' %>
+<% end %>
+
+

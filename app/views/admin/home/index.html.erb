@@ -1,0 +1,27 @@
+<nav aria-label="breadbrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item">Admin</li>
+  </ol>
+</nav>
+<h1>データの管理</h1>
+<h2>新規イベントの登録</h2>
+<p>
+  <%= render 'form', model: [:admin, Conference.new], label: '登録' %>
+</p>
+
+<% if @conferences != nil %>
+<h2>イベントの編集と削除</h2>
+<p>
+  <table class='table table-sm table-striped'>
+    <tr><th>イベント</th><th>編集</th><th>削除</th></tr>
+    <% @conferences.each{|c| %>
+      <tr>
+        <td><%= c.name %></td>
+        <td><%=link_to 'edit', edit_admin_conference_path(c) %></td>
+        <td><<%=link_to 'delete', admin_conference_path(c), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% } %>
+  </table>
+<p>
+<% end %>

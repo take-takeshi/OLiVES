@@ -1,0 +1,93 @@
+<nav area-label="breadcrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Conference', conference_path(@slot.track.day.conference) %></li>
+    <li class="breadcrumb-item"><%= link_to 'Day', day_path(@slot.track.day) %></li>
+    <li class="breadcrumb-item active" area-current="page">Session</li>
+  </ol>
+</nav>
+
+<h1>セッション紹介</h1>
+<div class="card border-primary">
+  <div class="card-header text-white bg-primary"><%= @slot.title %></div>
+  <div class="card-body">
+    <table class="table table-sm table-borderless">
+      <tbody>
+        <tr>
+          <th scope="row" width="80px">日時</th>
+          <td><%= @slot.pdatetime %></td>
+        </tr>
+
+        <tr>
+          <th scope="row" width="80px">会場</th>
+          <td><%= @slot.track.title %></td>
+        </tr>
+
+        <% if @slot.description != '' %><tr><th scope="row">説明</th><td>
+              <%= simple_format(@slot.description) %></td></tr><% end %>
+
+        <% if @slot.organizer %><tr><th scope="row">担当</th><td>
+              <%= @slot.organizer %></td></tr><% end %>
+
+        <% if @slot.lecturer %><tr><th scope="row">発表者</th><td>
+              <%= @slot.lecturer%></td></tr><% end %>
+
+        <% if @slot.chair %><tr><th scope="row">座長</th><td>
+              <%= @slot.chair %></td></tr><% end %>
+
+        <% if @slot.level %><tr><th scope="row">レベル</th><td>
+              <%= @slot.level%></td></tr><% end %>
+
+        <% if @slot.audience %><tr><th scope="row">対象者</th><td>
+              <%= @slot.audience %></td></tr><% end %>
+
+        <% if @slot.background %><tr><th scope="row">前提知識</th><td>
+              <%= @slot.background %></td></tr><% end %>
+
+        <% if @slot.category %><tr><th scope="row">カテゴリ</th><td>
+              <%= @slot.category %></td></tr><% end %>
+
+        <% if @slot.material %><tr><th scope="row">資料</th><td>
+              <%= link_to @slot.material, @slot.mlinkurl %></td></tr><% end %>
+        
+        <% if @user != nil %><tr><th scope="row">参加予定</th><td>
+              <%= @participation ? "登録済" : "未登録" %></td></tr><% end %>
+
+
+        <% if @seealso != nil && @seealso.length > 0 %>
+          <tr><th scope="row">See slso.</th><td>
+            <p>このセッションに関心のある参加者は
+              他に次のようなセッションにも興味があるようです。
+              <ul>
+                <%= @seealso.each{|s| %>
+                  <li><%= link_to s.title, slot_path(s) %></li>
+                <% } %>
+              </ul>
+            </p></td></tr>
+        <% end %>
+      
+      </tbody>
+    </table>
+
+  </div>
+
+  <% if @user != nil && @user.conference == @slot.track.day.conference %>
+    <div class="card-footer">
+      <% if @participation != nil %>
+        <%= form_with url: participation_path(@participation), method: :delete do |f| %>
+          <%= f.submit '登録をやめる', class: 'btn btn-danger'%>
+        <% end %>
+      <% else %>
+        <%= form_with model: Participation.new do |f| %>
+          <%= f.hidden_field :uid, { value: @user.id } %>
+          <%= f.hidden_field :sid, { value: @slot.id } %>
+          <%= f.submit '登録する', class: 'btn btn-primary' %>
+        <% end %>
+
+  <% end %>
+  
+    </div>
+  <% end %>
+
+</div>
+

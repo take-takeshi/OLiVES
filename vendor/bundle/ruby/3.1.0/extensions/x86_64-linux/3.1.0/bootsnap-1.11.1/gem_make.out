@@ -1,0 +1,15 @@
+current directory: /home/nacl8901/OLiVES/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.11.1/ext/bootsnap
+/home/nacl8901/.anyenv/envs/rbenv/versions/3.1.0/bin/ruby -I /home/nacl8901/.anyenv/envs/rbenv/versions/3.1.0/lib/ruby/3.1.0 -r ./siteconf20220415-17915-shfi7n.rb extconf.rb
+creating Makefile
+
+current directory: /home/nacl8901/OLiVES/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.11.1/ext/bootsnap
+make DESTDIR\= clean
+
+current directory: /home/nacl8901/OLiVES/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.11.1/ext/bootsnap
+make DESTDIR\=
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.so
+
+current directory: /home/nacl8901/OLiVES/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.11.1/ext/bootsnap
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20220415-17915-1clovc/bootsnap

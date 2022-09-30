@@ -1,0 +1,61 @@
+<nav aria-label="breadbrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Admin', admin_root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Conference', edit_admin_conference_path(@track.day.conference) %></li>
+    <li class="breadcrumb-item"><%= link_to 'Day', edit_admin_day_path(@track.day) %></li>
+    <li class="breadcrumb-item">Track</li>
+  </ol>
+</nav>
+
+
+<h1>データの編集</h1>
+<h2>トラックの編集</h2>
+<p>
+  <%= form_with model: [:admin, @track] do |f| %>
+    <table>
+      <tr><td><%= f.label 'タイトル' %></td>
+          <td><%= f.text_field :title, class: 'form-control'%></td></tr>
+
+      <tr><td><%= f.label '説明' %></td>
+          <td><%= f.text_area :description, class: 'form-control'%></td></tr>
+
+      <tr><td>連番</td>
+          <td><%= @track.seq_no %></td></tr>
+
+    </table>
+    <%= f.submit '更新', class: 'btn btn-primary' %>
+  <% end %>
+</p>
+
+<h2>セッションの編集</h2>
+<p>
+  <table class='table table-sm table-striped'>
+    <tr><th>時間</th><th>セッション</th><th>編集</th><th>削除</th></tr>
+    <% @track&.slots&.order('start_time asc').each{|s| %>
+      <tr>
+        <td><%= s.ptime %></td>
+        <td><%= s.title %></td>
+        <td><%= link_to 'edit', edit_admin_slot_path(s) %></td>
+        <td><%= link_to 'delete',admin_slot_path(s),
+        method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% } %>
+  </table>
+</p>
+
+<h3>新規セッション</h3>
+<p>
+  <%= form_with model: [:admin, Slot.new] do |f| %>
+    <table>
+      <tr><td><%= f.label 'タイトル' %></td>
+          <td><%= f.text_field :title, class: 'form-control'%></td></tr>
+      
+      <tr><td><%= f.label '時間' %></td>
+        <td><%= f.time_select :start_time, minute_step: 5 %> - 
+          <%= f.time_select :end_time, minute_step: 5 %></td></tr>
+   </table>
+   <%= hidden_field_tag :track_id, @track.id  %>
+   <%= f.submit '追加', class: 'btn btn-primary' %>
+  <% end %>
+</p>

@@ -1,0 +1,27 @@
+<nav aria-label="breadbrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Admin', admin_root_path %></li>
+    <li class="breadcrumb-item">Conference</li>
+  </ol>
+</nav>
+
+<h1>データの編集</h1>
+<h2>イベントの編集</h2>
+<p>
+  <%= render 'admin/home/form', model: [:admin, @conference], label: '更新' %>
+</p>
+
+<h2>デイの編集</h2>
+<p>
+  <table class='table table-sm table-striped'>
+    <tr><th>デイ</th><th>編集</th></tr>
+    <% @conference&.days&.each{|d| %>
+      <tr>
+        <td><%= d.title %></td>
+        <td><%= link_to 'edit', edit_admin_day_path(d) %></td>
+      </tr>
+    <% } %>
+  </table>
+</p>
+

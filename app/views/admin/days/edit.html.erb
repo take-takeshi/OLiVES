@@ -1,0 +1,46 @@
+<nav aria-label="breadbrumbs">
+  <ol class="breadcrumb mb-1 bg-white">
+    <li class="breadcrumb-item"><%= link_to 'Top', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Admin', admin_root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Conference', edit_admin_conference_path(@day.conference) %></li>
+    <li class="breadcrumb-item">Day</li>
+  </ol>
+</nav>
+
+
+<h1>データの編集</h1>
+<h2>デイの編集</h2>
+<p>
+  <%= form_with model: [:admin, @day] do |f| %>
+    <table>
+      <tr><td><%= f.label 'タイトル' %></td>
+          <td><%= f.text_field :title, class: 'form-control'%></td></tr>
+
+      <tr><td><%= f.label '説明' %></td>
+          <td><%= f.text_area :description, class: 'form-control'%></td></tr>
+
+      <tr><td>連番</td>
+          <td><%= @day.seq_no %></td></tr>
+
+      <% if @day.tracks.size == 0 %>
+        <tr><td><%= f.label '追加トラック数' %></td>
+            <td><%= f.select :num_track,[[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7]] %></td></tr>
+      <% end %>
+
+    </table>
+    <%= f.submit '更新', class: 'btn btn-primary' %>
+  <% end %>
+</p>
+
+<h2>トラックの編集</h2>
+<p>
+  <table class='table table-sm table-striped'>
+    <tr><th>トラック</th><th>編集</th></tr>
+    <% @day&.tracks.each{|t| %>
+      <tr>
+        <td><%= t.title %></td>
+        <td><%= link_to 'edit', edit_admin_track_path(t) %></td>
+      </tr>
+    <% } %>
+  </table>
+</p>

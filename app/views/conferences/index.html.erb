@@ -1,0 +1,12 @@
+<h1>All Events</h1>
+<ul>
+  <% @conferences&.each{|conf| %>
+    <li>
+      <%= link_to conf.name, conference_path(conf) %>(<%= conf.start_date %>
+      <% if conf.duration > 1 then %>
+        to <%= conf.start_date + conf.duration-1 %>
+    <% end %>)
+    </li>
+  <% } %>
+</ul>
+
