@@ -13,7 +13,7 @@ OLiVESは、Ruby on Railsを使用して作られたオンラインイベント�
 * heroku 7.59.4 linux-x64 node-v12.21.0
 
 # Changes
-基本は書籍と同じコードですが、以下の変更を加えています。
+基本は書籍と同じコードですが、主に以下の変更を加えています。
 * 使用するライブラリを変更（Webpacker → importmap-rails、Sprocket-rails → Propshaft）
 * config/route.rb のルーティングを一部変更
 * app/views/devise以下3つのビューファイルに data: { turbo: "false" } を追加
