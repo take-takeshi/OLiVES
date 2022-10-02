@@ -1,8 +1,8 @@
 # About
 OLiVESは、Ruby on Railsを使用して作られたオンラインイベント支援システムです。
 
-『最短距離でしっかり身に付く! Webアプリケーション開発の教科書~Ruby on Railsで作る本格Webアプリ』(飯尾淳,2021,技術評論社)
-の第5～6章を写しつつ、細部を変更したプログラムになっております。
+『最短距離でしっかり身に付く! Webアプリケーション開発の教科書~Ruby on Railsで作る本格Webアプリ』
+(飯尾淳,2021,技術評論社)の第5～6章を写しつつ、細部を変更したプログラムになっております。
 
 また掲載にあたっては、著者である飯尾淳様に許可をいただいています。
  
@@ -32,5 +32,5 @@ connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?
 * コマンド
 sudo service postgresql restart
 
-#URL
+* URL
 https://olive-prod.herokuapp.com/
