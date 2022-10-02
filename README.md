@@ -17,18 +17,21 @@ OLiVESは、Ruby on Railsを使用して作られたオンラインイベント�
 * 使用するライブラリを変更（Webpacker → importmap-rails、Sprocket-rails → Propshaft）
 * config/route.rb のルーティングを一部変更
 * app/views/devise以下3つのビューファイルに data: { turbo: "false" } を追加
-* app/controllers/admin以下コントローラにおいて、createメソッドの引数に1階層上のidを追加  （例：Dayのインスタンス作成時にconferenceのIDを追加）
+* app/controllers/admin以下コントローラにおいて、createメソッドの引数に1階層上のidを追加  
+（例：Dayのインスタンス作成時にconferenceのIDを追加）
 * app/controllers/admin/slots_controller.rb内の f.hidden_field → hidden_field_tag に変更
 
 # Note
 bin/rails s 実行時に以下のエラーが発生した場合は、以下コマンドでPostgresqlの再起動を行ってください。
 
-* エラー  ActiveRecord :: ConnectionNotEstablished
+* エラー  
+ActiveRecord :: ConnectionNotEstablished
 could not connect to server: No such file or directory
 Is the server running locally and accepting
 connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?
 
-* コマンド  sudo service postgresql restart
+* コマンド  
+sudo service postgresql restart
 
 # URL
 https://olive-prod.herokuapp.com/
