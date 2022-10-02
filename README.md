@@ -32,5 +32,5 @@ connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?
 * コマンド
 sudo service postgresql restart
 
-* URL
+# URL
 https://olive-prod.herokuapp.com/
